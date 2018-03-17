@@ -13,7 +13,7 @@ require('tg-lib.php');
 require('config.php');
 
 $httpRequestBody = file_get_contents('php://input');
-$hash = hash_hmac('sha256', $httpRequestBody, channelSecret, true);
+$hash = hash_hmac('sha256', $httpRequestBody, linechannelSecret, true);
 $signature = base64_encode($hash);
 if (!hash_equals($signature, $_SERVER['HTTP_X_LINE_SIGNATURE'])) {   // Verify sender is LINE or not
 	exit('Auth Fail');
